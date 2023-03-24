@@ -1,5 +1,5 @@
 
-.COLOR{
+:root{
   --primary:#8031A7;
   --green:#33AA5A;
   /* --orange:#E6A8A8; */
@@ -32,7 +32,7 @@
 }
 
 .text-link{
-  color:var(--primary)
+  color:var(--black)
 }
 .right{
 

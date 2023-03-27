@@ -18,7 +18,7 @@ export const modalData = [
 
 export const que = [
   {
-      "question": "What colour is a panda?",
+      "question": "What color is a panda?",
       "optionA": "Green and Yellow",
       "optionB": "Blue and Red",
       "optionC": "Green and White",

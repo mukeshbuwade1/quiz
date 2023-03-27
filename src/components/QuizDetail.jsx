@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
-// import { userList } from '../assets/dummyData'
 import { FaStarHalfAlt, FaStar, FaRegStar } from "react-icons/fa"
+import { BiTrophy, BiQuestionMark, BiTime } from "react-icons/bi"
 import { AiOutlineClose } from "react-icons/ai"
+import { CiCircleQuestion } from "react-icons/ci"
 import { modalData } from '../assets/dummyData';
-import { useNavigate } from 'react-router-dom';
-function QuizDetail() {
-const navigate = useNavigate()
+// import { useNavigate } from 'react-router-dom';
+function QuizDetail(props) {
+  // const navigate = useNavigate()
   const [isModalVisible, setIsModalVisible] = useState(false)
 
-  function ModalHandler() {
-    // console.log("close button clicked")
+  function ModalHandler(e) {
+    e.stopPropagation();
     setIsModalVisible(!isModalVisible)
   }
 
@@ -31,8 +32,8 @@ const navigate = useNavigate()
     return <div style={{ borderWidth: 1, borderColor: "red" }}>
       {rating_stack?.map((e, i) => {
         return e === "full" ? (
-          <FaStar className='star-icon' />
-        ) : e === "half" ? <FaStarHalfAlt className='star-icon' /> : <FaRegStar className='star-icon' />
+          <FaStar className='star-icon' key={i} />
+        ) : e === "half" ? <FaStarHalfAlt className='star-icon' key={i} /> : <FaRegStar className='star-icon' key={i} />
       }
       )}
     </div>
@@ -42,34 +43,15 @@ const navigate = useNavigate()
       <div className='detail-section'>
         <h1 className='heading'>The Daily MS Excel Quiz</h1>
         <div className="action-container">
-          <div className="left center">
-            <a className="text-link">leave a comment</a>
-            <a className="text-link">save quiz</a>
-            <a className="text-link">challenge friends</a>
-          </div>
+          <ul className="left center">
+            <li ><BiTrophy /> <span>50%  passing percentage</span> </li>
+            <li><BiQuestionMark /> <span>10 questions</span> </li>
+            <li><BiTime /> <span>1 Min per Question</span> </li>
+          </ul>
+
           <div className="right">
-            {/* <div className="enrolled-showcase">
-              {
-                userList?.map((e, i) => {
-                  if (i < 5) {
-                    return (
-                      <img src={e} alt="" className='enrolled-user-image' style={{ marginLeft: `${i * 20}px` }} />
-                    )
-                  }
-                  else if (i == 5) {
-                    return (
-                      <div className='center enrolled-user-image '>
-                        <span>{`${i - 3}+`}</span>
-                      </div>
-                    )
-                  } else {
-                    // break;
-                  }
-                })
-              }
-            </div> */}
             <div className="rating_container">
-              <p className="sub_title">Top rated quiz</p>
+              <p className="sub_title" style={{fontWeight:"500"}}>Top rated quiz</p>
               <RatingCom _rate={rate} />
               <p className="sub_title">{rate} out of 5</p>
             </div>
@@ -80,15 +62,15 @@ const navigate = useNavigate()
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
           </p>
         </div>
-        <button onClick={ModalHandler} >let's play</button>
+        <button className='button' onClick={ModalHandler} >let's play</button>
       </div>
-      <div className="modal" style={{ display: isModalVisible ? 'flex' : 'none' }} >
+      <div onClick={ModalHandler} className="modal" style={{ display: isModalVisible ? 'flex' : 'none' }} >
         <div className="modal-inner-box">
           <AiOutlineClose onClick={ModalHandler} className='close-button' />
           <h1 className='heading'>Quiz rules</h1>
           {
             modalData.map((e, i) => (
-              <div className="modal-row">
+              <div className="modal-row" key={e.heading + i}>
                 <div className="modal-img-container">
                   <img src={e.icon} alt="image" className='modal-icon' />
                 </div>
@@ -99,7 +81,7 @@ const navigate = useNavigate()
               </div>
             ))
           }
-          <button onClick={()=>navigate("QuizScreen",{navigate:navigate})} >Start</button>
+          <button className='button' onClick={() => props?.setScreenName("Quiz")} >Start</button>
         </div>
       </div>
     </section>

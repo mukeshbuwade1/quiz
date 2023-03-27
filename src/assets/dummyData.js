@@ -1,24 +1,13 @@
-export const userList = [
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR63KoribGVDB_dswx8iUX99udIebJK_EsaYYTwg2vJoIeIECXhO8iWnI5VBU64wLJ-8gg&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR63KoribGVDB_dswx8iUX99udIebJK_EsaYYTwg2vJoIeIECXhO8iWnI5VBU64wLJ-8gg&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR63KoribGVDB_dswx8iUX99udIebJK_EsaYYTwg2vJoIeIECXhO8iWnI5VBU64wLJ-8gg&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR63KoribGVDB_dswx8iUX99udIebJK_EsaYYTwg2vJoIeIECXhO8iWnI5VBU64wLJ-8gg&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR63KoribGVDB_dswx8iUX99udIebJK_EsaYYTwg2vJoIeIECXhO8iWnI5VBU64wLJ-8gg&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR63KoribGVDB_dswx8iUX99udIebJK_EsaYYTwg2vJoIeIECXhO8iWnI5VBU64wLJ-8gg&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR63KoribGVDB_dswx8iUX99udIebJK_EsaYYTwg2vJoIeIECXhO8iWnI5VBU64wLJ-8gg&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR63KoribGVDB_dswx8iUX99udIebJK_EsaYYTwg2vJoIeIECXhO8iWnI5VBU64wLJ-8gg&usqp=CAU",
-]
-
 export const modalData = [
   {
     icon: require("./image/clock.png"),
     heading: "10 Mins",
-    info: "keep in mind you have only 10 mints"
+    info: "keep in mind you have only 10 minutes"
   },
   {
     icon: require("./image/question.png"),
     heading: "10 Questions",
-    info: "We belive that you will ace it"
+    info: "We believe that you will ace it"
   },
   {
     icon: require("./image/badge.png"),
@@ -28,51 +17,6 @@ export const modalData = [
 ]
 
 export const que = [
-//   {
-//       "question": "What temperature does water boil at?",
-//       "optionA": "50 degrees Celcius",
-//       "optionB": "25 degrees Celcius",
-//       "optionC": "100 degrees Celcius",
-//       "optionD": "150 degrees Celcius",
-//       "answer": "100 degrees Celcius"
-//   },
-
-//   {
-//       "question": "Who wrote Julius Caesar, Macbeth and Hamlet?",
-//       "optionA": "Wole Soyinka",
-//       "optionB": "William Shakespeare",
-//       "optionC": "Ngozi Chimamanda Adichie",
-//       "optionD": "Dan Brown",
-//       "answer": "William Shakespeare"
-//   },
-
-//   {
-//       "question": "What did the crocodile swallow in Peter Pan?",
-//       "optionA": "A Book",
-//       "optionB": "A Computer",
-//       "optionC": "A pair of shoes",
-//       "optionD": "Alarm Clock",
-//       "answer": "Alarm Clock"
-//   },
-
-//   {
-//       "question": "Which is the only mammal that can’t jump?",
-//       "optionA": "Dog",
-//       "optionB": "Elephant",
-//       "optionC": "Goat",
-//       "optionD": "Lion",
-//       "answer": "Elephant"
-//   },
-
-//   {
-//       "question": "Who lived at 221B, Baker Street, London?",
-//       "optionA": "Tony Stark",
-//       "optionB": "Morgan Freeman",
-//       "optionC": "Sherlock Holmes",
-//       "optionD": "Samuel L. Jackson",
-//       "answer": "Sherlock Holmes"
-//   },
-
   {
       "question": "What colour is a panda?",
       "optionA": "Green and Yellow",

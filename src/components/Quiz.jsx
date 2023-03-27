@@ -1,16 +1,10 @@
-import React, { Component, Fragment, useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
-import M from 'materialize-css';
-import classnames from 'classnames';
-// import 'QuizScreenStyle.scss'
+import React, { Fragment, useEffect, useState } from 'react';
 import { que as questions } from '../assets/dummyData';
 import isEmpty from '../utils/isEmpty';
 import Timer from './Timer';
-// import { Navigate, useNavigate } from 'react-router-dom';
-
 
 function Quiz(props) {
-    // const navigate= useNavigate()
+    // react state 
     const [state, setState] = useState({
         currentQuestion: {},
         nextQuestion: {},
@@ -28,11 +22,12 @@ function Quiz(props) {
     })
     const [timesUp, setTimesUp] = useState(false)
 
-    const alertUser = (e) => {
-        e.preventDefault();
-        e.returnValue = "";
-    };
+    // useEffect hook - call when page is refreshing 
     useEffect(() => {
+        const alertUser = (e) => {
+            e.preventDefault();
+            e.returnValue = "";
+        };
         window.addEventListener("beforeunload", alertUser);
         return () => {
             window.removeEventListener("beforeunload", alertUser);
@@ -49,10 +44,11 @@ function Quiz(props) {
     }, [state.currentQuestionIndex])
 
     useEffect(() => {
-        if (timesUp) handleNextButtonClick()
+        if (timesUp) { handleNextButtonClick() }
     }, [timesUp])
 
-
+    // helper functions 
+    // setting up question 
     const displayQuestions = (questions, currentQuestion, nextQuestion, previousQuestion) => {
         let { currentQuestionIndex } = state;
         if (!isEmpty(questions)) {
@@ -69,15 +65,10 @@ function Quiz(props) {
                 answer,
                 previousRandomNumbers: []
             });
-            // clearInterval(interval);
-            // startTimer();
-
-            // this.showOptions();
-            // this.handleDisableButton();
-
         }
     };
 
+    // store selectedAnswer 
     const handleOptionClick = (e) => {
         if (e.target.innerHTML !== state.selectedAnswer) {
             setState({
@@ -86,40 +77,8 @@ function Quiz(props) {
             })
         }
     }
-    let interval;
-    function startTimer() {
-        const countDownTime = Date.now() + 61000;
-        interval = setInterval(() => {
-            const now = new Date();
-            const distance = countDownTime - now;
-            console.log(countDownTime)
 
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            if (distance < 0) {
-                clearInterval(interval);
-                setState({
-                    ...state,
-                    time: {
-                        minutes: 0,
-                        seconds: 0
-                    }
-                });
-                // endGame();
-            } else {
-                setState({
-                    ...state,
-                    time: {
-                        minutes,
-                        seconds,
-                        distance
-                    }
-                });
-            }
-        }, 1000);
-    }
-
+    // next button click event 
     function handleNextButtonClick() {
         if (state?.selectedAnswer) {
             if (state.selectedAnswer.toLowerCase() === state.answer.toLowerCase()) {
@@ -130,38 +89,30 @@ function Quiz(props) {
             }
         }
         else {
-            console.log("first")
-            if (state.nextQuestion !== undefined) {
+            if (state.nextQuestion !== undefined || !timesUp) {
                 setState({
                     ...state,
                     currentQuestionIndex: state.currentQuestionIndex + 1
                 });
-                // displayQuestions(questions, state.currentQuestion, state.nextQuestion, state.previousQuestion);
             }
             else {
                 endGame();
             }
         }
-        // clearInterval(interval);
-        // startTimer();
     };
 
     function correctAnswer() {
-        console.log("mk", state?.currentQuestionIndex)
         setState({
             ...state,
             score: state.score + 1,
             correctAnswers: state.correctAnswers + 1,
             currentQuestionIndex: state.currentQuestionIndex + 1,
-            numberOfAnsweredQuestions: state.numberOfAnsweredQuestions + 1
+            numberOfAnsweredQuestions: state.numberOfAnsweredQuestions + 1,
+            selectedAnswer: ""
         });
-
-
     }
     function setupNextQue() {
-        setTimesUp(false)
-        console.log("mk1", state?.currentQuestionIndex)
-        if (state.nextQuestion === undefined) {
+        if (state.nextQuestion === undefined || timesUp) {
             endGame();
         } else {
             displayQuestions(questions, state.currentQuestion, state.nextQuestion, state.previousQuestion);
@@ -177,7 +128,6 @@ function Quiz(props) {
             numberOfAnsweredQuestions: state.correctAnswers + state.wrongAnswers,
             correctAnswers: state.correctAnswers,
             wrongAnswers: state.wrongAnswers,
-
         };
         props.setResult(playerStats)
         setTimeout(() => {
@@ -190,11 +140,11 @@ function Quiz(props) {
             ...prevState,
             wrongAnswers: prevState.wrongAnswers + 1,
             currentQuestionIndex: prevState.currentQuestionIndex + 1,
-            numberOfAnsweredQuestions: prevState.numberOfAnsweredQuestions + 1
+            numberOfAnsweredQuestions: prevState.numberOfAnsweredQuestions + 1,
+            selectedAnswer: ''
         }));
-
     }
-    console.log("quiz")
+    
     return (
         <Fragment>
             <div className="questions">

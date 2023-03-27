@@ -2,20 +2,21 @@ import React, { useState } from 'react'
 import { FaStarHalfAlt, FaStar, FaRegStar } from "react-icons/fa"
 import { BiTrophy, BiQuestionMark, BiTime } from "react-icons/bi"
 import { AiOutlineClose } from "react-icons/ai"
-import { CiCircleQuestion } from "react-icons/ci"
 import { modalData } from '../assets/dummyData';
-// import { useNavigate } from 'react-router-dom';
 function QuizDetail(props) {
-  // const navigate = useNavigate()
+  // react state
   const [isModalVisible, setIsModalVisible] = useState(false)
 
+  // constant data 
+  const rate = 4.6;
+
+  // helper function - modal show/hide 
   function ModalHandler(e) {
     e.stopPropagation();
     setIsModalVisible(!isModalVisible)
   }
 
-  const rate = 4.6;
-
+  // react component to show rating 
   const RatingCom = ({ _rate }) => {
     const rating_stack = []
     if (_rate) {

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 export default function QuizResult(props) {
     const { result: state } = props;
-    const userScore = state.score;
+    const userScore = state.score * 10;
     let stats, remark;
     if (userScore <= 30) {
         remark = 'You need more practice!';
@@ -24,28 +24,36 @@ export default function QuizResult(props) {
                 <h1>Quiz has ended</h1>
                 <div className="container stats">
                     <h4>{remark}</h4>
-                    <h2>Your Score: {state.score.toFixed(0)}&#37;</h2>
-                    <span className="stat left">Total number of questions: </span>
-                    <span className="right">{state.numberOfQuestions}</span><br />
-
-                    <span className="stat left">Number of attempted questions: </span>
-                    <span className="right">{state.numberOfAnsweredQuestions}</span><br />
-
-                    <span className="stat left">Number of Correct Answers: </span>
-                    <span className="right">{state.correctAnswers}</span> <br />
-
-                    <span className="stat left">Number of Wrong Answers: </span>
-                    <span className="right">{state.wrongAnswers}</span><br />
+                    <h2>Your Score: {(state.score * 10).toFixed(0)}&#37;</h2>
+                    <div className="result-box">
+                        <div className="card">
+                            <span className="right">{state.numberOfQuestions}</span>
+                            <span className="stat left">Total</span>
+                        </div>
+                        <div className="card">
+                            <span className="right">{state.numberOfAnsweredQuestions}</span>
+                            <span className="stat left">attempted</span>
+                        </div>
+                        <div className="card">
+                            <span className="right">{state.correctAnswers}</span>
+                            <span className="stat left">Correct</span>
+                        </div>
+                        <div className="card">
+                            <span className="right">{state.wrongAnswers}</span>
+                            <span className="stat left">Wrong</span>
+                        </div>
+                    </div>
 
                 </div>
-
-                <button className='button' onClick={() => props?.setScreenName("QuizDetail")} >Back to Home</button>
+                <div style={{ textAlign: 'center',marginTop:"10px" }}>
+                    <button className='button' onClick={() => props?.setScreenName("QuizDetail")} >Back to Home</button>
+                </div>
 
             </Fragment>
         );
     } else {
         stats = (
-            <section>
+            <section style={{ textAlign: 'center',marginTop:"10px" }}>
                 <h1 className="no-stats">No Statistics Available</h1>
                 <button className='button' onClick={() => props?.setScreenName("QuizDetail")} >Back to Home</button>
             </section>

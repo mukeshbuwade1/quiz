@@ -75,7 +75,7 @@ export const que = [
       "question": "What’s the capital of Ethiopia?",
       "optionA": "Cape Town",
       "optionB": "San Francisco",
-      "optionC": "Abuja",
+      "optionC": "Addis Ababa",
       "optionD": "Syndey",
       "answer": "Addis Ababa"
   },

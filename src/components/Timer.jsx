@@ -1,7 +1,6 @@
-import classNames from 'classnames';
 import React, { memo, useEffect, useState } from 'react'
 
-function Timer({ questionIndex, setTimesUp }) {
+function Timer({  setTimesUp }) {
     const [time, setTime] = useState({ minutes: 0, seconds: 0 });
 
     useEffect(() => {
@@ -24,10 +23,7 @@ function Timer({ questionIndex, setTimesUp }) {
     }, [])
     return (
         <span 
-        className={classNames('right valid', {
-            'warning': time?.distance <= 120000,
-            'invalid': time?.distance < 30000
-        })}
+        className={"right valid"}
         style={{
             textAlign:"center"
         }}
